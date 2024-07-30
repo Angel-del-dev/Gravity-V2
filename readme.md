@@ -2,7 +2,7 @@
 
 ### Features
 * Full dynamic routing
-    * Routes can contain dynamic parameters
+    * Routes can contain (typed)dynamic parameters
 
 ### TODO
 * View Rendering system
@@ -11,3 +11,10 @@
     * Connection
     * Querys
 * .env
+    * Sensitive data
+        * Password
+        * Email
+        * Tokens
+        * Ids
+* POST METHOD
+    * Handle params
