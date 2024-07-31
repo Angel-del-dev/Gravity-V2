@@ -1,4 +1,5 @@
 <?php
+use lib\components\ViewRenderer;
 
 require_once('../autoload.php');
 require_once('../routes/raw.php');
@@ -88,12 +89,16 @@ if (is_null($selected_route)) {
 } else {
     $class = new $selected_route['CLASS']();
     $fn = $selected_route['FN'];
-    $class->$fn(...$selected_route['PARAMS']);
+    $output = $class->$fn(...$selected_route['PARAMS']);
 }
 
 if(!is_null($output)) {
     if(is_array($output)) {
         echo json_encode($output);
         exit;
+    }
+    
+    if($output instanceof ViewRenderer) {
+        $output->Render();
     }
 }

@@ -3,18 +3,18 @@
 ### Features
 * Full dynamic routing
     * Routes can contain (typed)dynamic parameters
-
-### TODO
-* View Rendering system
-    * Templates
 * Mysql PDO
     * Connection
     * Querys
-* .env
+* ini.json
     * Sensitive data
         * Password
         * Email
         * Tokens
         * Ids
+
+### TODO
+* View Rendering system
+    * Templates
 * POST METHOD
     * Handle params
