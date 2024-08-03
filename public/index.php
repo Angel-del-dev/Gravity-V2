@@ -61,6 +61,10 @@ foreach($routes as $route) {
                         // Not necessary but defines the type string
                         $value = (string) $value;
                     break;
+                    default:
+                        print_r('Route type not known');
+                        exit;
+                    break;
                 }
             }
             
