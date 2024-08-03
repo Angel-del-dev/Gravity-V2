@@ -12,12 +12,13 @@
         * Email
         * Tokens
         * Ids
+* POST METHOD
+    * Handle params
+        * Handled Using the Utils\Request class
 
 ### TODO
 * View Rendering system
     * Templates
-* POST METHOD
-    * Handle params
 * More types on routes
     * Dates
 
