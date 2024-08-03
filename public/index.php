@@ -1,8 +1,8 @@
 <?php
 use lib\components\ViewRenderer;
 
-require_once('../autoload.php');
-require_once('../routes/raw.php');
+require_once '../autoload.php';
+require_once '../routes/raw.php';
 
 use lib\components\Route;
 
@@ -49,13 +49,21 @@ foreach($routes as $route) {
             $params_ok = true;
             $actual_clean = str_replace('{', '', $route_actual);
             $actual_clean = str_replace('}', '', $actual_clean);
-            $type = explode(':', $actual_clean)[1];
+            $array_separated = explode(':', $actual_clean);
             $value = $req_actual;
-            switch(strtoupper($type)) {
-                case 'INT':
-                    $value = (int) $value;
-                break;
+            // If the route definition does not specify a date, its a string by default
+            if(count($array_separated) > 1) {
+                switch(strtoupper($array_separated[1])) {
+                    case 'INT':
+                        $value = (int) $value;
+                    break;
+                    case 'STRING':
+                        // Not necessary but defines the type string
+                        $value = (string) $value;
+                    break;
+                }
             }
+            
             $route['PARAMS'][] = $value;
         }
         
