@@ -15,7 +15,7 @@
         * Tokens
         * Ids
 * Request parameters
-        * Handled Using the Utils\Request class
+    * Handled Using the Utils\Request class
 * Easy helper function support
     * helpers/
         * global.php
@@ -34,9 +34,12 @@
 
 ### TODO
 * Middleware
-    * Bearer auth
-    * Token auth
-    * Session auth
+    * AUTH
+        * Bearer auth
+        * Token auth
+        * Session auth
+    * Custom
+        * Allow creation of middlewares
 
 ### Routes
 
