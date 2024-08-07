@@ -1,4 +1,6 @@
-# Gravity2 V0.0.1
+![Gravity logo](public/assets/img/logo.png)
+
+# Gravity2(0.0.1.alpha1)
 
 ### Features
 * Full dynamic routing
