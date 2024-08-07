@@ -1,10 +1,10 @@
 <?php
-use lib\components\ViewRenderer;
-
 require_once '../autoload.php';
 require_once '../routes/raw.php';
 
 use lib\components\Route;
+use lib\Response\ResponseType;
+use lib\render\ViewRenderer;
 
 function sortByLength($a,$b){
     return strlen($b['ROUTE'])-strlen($a['ROUTE']);
@@ -112,5 +112,9 @@ if(!is_null($output)) {
     
     if($output instanceof ViewRenderer) {
         $output->Render();
+    }
+
+    if($output instanceof ResponseType) {
+        echo $output->getResponse();
     }
 }

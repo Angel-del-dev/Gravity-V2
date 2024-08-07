@@ -1,6 +1,6 @@
 <?php
 
-namespace lib\components;
+namespace lib\connection;
 
 use pdo;
 use stdClass;
@@ -39,7 +39,7 @@ class DBResult {
  * 
  */
 
-class Connection {
+class Mysql {
     protected $connection;
     protected $prepared;
     protected DBResult|null $result;

@@ -1,6 +1,6 @@
 <?php
 
-namespace lib\components;
+namespace lib\render;
 
 class View {
     /**
@@ -31,11 +31,16 @@ class ViewRenderer {
     }
 
     public function Render() {
+        $require = "{$this->route_prefix}/{$this->view_route}.{$this->extension}";
+        if(!is_file($require)) {
+            print_r("View '{$this->view_route}' doesn't exist");
+            exit;
+        }
         if($this->useViewSystem) ob_start();
         foreach($this->params as $key => $value) {
             ${$key} = $value;
         }
-        require_once "{$this->route_prefix}/{$this->view_route}.{$this->extension}";
+        require_once $require;
         if($this->useViewSystem) echo (new ViewParser(ob_get_clean()))->Parse($this->params);
     }
 }

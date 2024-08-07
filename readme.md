@@ -17,10 +17,11 @@
         * Handled Using the Utils\Request class
 
 ### TODO
-* View Rendering system
-    * Templates
-* More types on routes
-    * Dates
+* Response types
+* Middleware
+    * Bearer auth
+    * Token auth
+    * Session auth
 
 ### Routes
 

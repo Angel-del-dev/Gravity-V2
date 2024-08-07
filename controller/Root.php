@@ -2,16 +2,18 @@
 
 namespace controller;
 
-use lib\components\View;
-use lib\components\ViewRenderer;
+use lib\render\View;
+use lib\response\Response;
+use lib\Response\ResponseType;
 
 class Root {
-    public function GetRoot():ViewRenderer {
-        return View::Render('simple/Root', [
+    public function GetRoot() {
+        /*return View::Render('simple/Root', [
             'first' => 'test templating',
             'second' => '23',
             'third' => 'uknown'
-        ]);
+        ]);*/
+        return Response::Handle(['code' => 200], 'text/json');
     }
 
     public function GetNotFound():array {
