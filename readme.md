@@ -14,9 +14,14 @@
         * Email
         * Tokens
         * Ids
-* POST METHOD
-    * Handle params
+* Request parameters
         * Handled Using the Utils\Request class
+* Easy helper function support
+    * helpers/
+        * global.php
+            * This file will always be available
+        * Other files can be required if defined in controller
+            * 'controller/Root.php' for more details
 * Response types
     * Simple
         * Every PHP type

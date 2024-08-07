@@ -5,12 +5,12 @@ namespace lib\render;
 class View {
     /**
      * /
-     * @param string $view_route already points to '/views/'
+     * @param string $view_route already points to '/views/' and must not contain a file extension
      * 
-     * @param string $view_route must not contain a file extension
+     * @param array $helper_files already points to '/helpers/' and must not contain file extension
      */
-    static function Render(string $view_route, array $params = [], bool $useViewSystem = false):ViewRenderer {
-        return new ViewRenderer($view_route, $params, $useViewSystem);
+    static function Render(string $view_route, array $params = [], array $helper_files = [], bool $useViewSystem = false):ViewRenderer {
+        return new ViewRenderer($view_route, $params, $helper_files, $useViewSystem);
     }
 }
 /**
@@ -22,15 +22,25 @@ class ViewRenderer {
     protected string $extension;
     protected array $params;
     protected bool $useViewSystem;
-    public function __construct(string $view_route, array $params, bool $useViewSystem) {
+    protected array $helper_files;
+    public function __construct(string $view_route, array $params, array $helper_files = [], bool $useViewSystem) {
         $this->view_route = $view_route;
         $this->route_prefix = "{$_SERVER['DOCUMENT_ROOT']}/../views";
         $this->extension = 'phtml';
         $this->params = $params;
         $this->useViewSystem = $useViewSystem;
+        $this->helper_files = $helper_files;
     }
 
     public function Render() {
+        $globalHelperRoute = "{$_SERVER['DOCUMENT_ROOT']}/../helpers/global.php";
+
+        if(is_file($globalHelperRoute)) {
+            require_once $globalHelperRoute;
+        }
+
+        $this->RequireHelpers();
+
         $require = "{$this->route_prefix}/{$this->view_route}.{$this->extension}";
         if(!is_file($require)) {
             print_r("View '{$this->view_route}' doesn't exist");
@@ -42,6 +52,17 @@ class ViewRenderer {
         }
         require_once $require;
         if($this->useViewSystem) echo (new ViewParser(ob_get_clean()))->Parse($this->params);
+    }
+
+    private function RequireHelpers() {
+        $helpersFolder = "{$_SERVER['DOCUMENT_ROOT']}/../helpers/";
+        foreach($this->helper_files as $file) {
+            if(!is_file("{$helpersFolder}{$file}.php")) {
+                print_r("{$helpersFolder}'{$file}'.php not found");
+                exit;
+            }
+            require_once "{$helpersFolder}{$file}.php";
+        }
     }
 }
 
