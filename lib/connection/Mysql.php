@@ -45,7 +45,7 @@ class Mysql {
     protected DBResult|null $result;
     public function __construct() {
 
-        $db_info = Utils::INI()->database;
+        $db_info = Utils::INI()->mysql_database;
         $qString = sprintf('mysql:host=localhost;dbname=wp_clone', $db_info->host, $db_info->database);
         $this->connection = new pdo($qString, $db_info->user, $db_info->password);
     }
