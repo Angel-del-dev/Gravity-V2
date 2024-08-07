@@ -8,6 +8,7 @@ class ValidResponse {
         return [
             'text/json' => 'json_encode',
             'text/xml' => '',
+            'text/html' => ''
         ];
     }
 

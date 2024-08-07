@@ -1,6 +1,10 @@
 <?php
 require_once '../autoload.php';
-require_once '../routes/raw.php';
+
+use lib\router\Router;
+
+Router::Create();
+/*
 
 use lib\components\Route;
 use lib\Response\ResponseType;
@@ -118,3 +122,4 @@ if(!is_null($output)) {
         echo $output->getResponse();
     }
 }
+*/

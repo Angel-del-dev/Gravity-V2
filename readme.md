@@ -17,9 +17,17 @@
 * POST METHOD
     * Handle params
         * Handled Using the Utils\Request class
+* Response types
+    * Simple
+        * Every PHP type
+    * Complex
+        * ViewRenderer
+        * ResponseType
+            * text/xml
+            * text/json
+            * text/html
 
 ### TODO
-* Response types
 * Middleware
     * Bearer auth
     * Token auth
