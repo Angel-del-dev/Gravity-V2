@@ -1,8 +1,8 @@
 {
     "mysql_database": {
-        "host": "localhost",
+        "host": "",
         "database": "",
-        "user": "root",
+        "user": "",
         "password": ""
     }
 }
