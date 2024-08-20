@@ -5,7 +5,7 @@ use lib\auth\SimpleAuth;
 
 class Middleware {
     static protected $middleware = [];
-    static public function on(string $key, $function) {
+    static public function on(string $key, callable $function) {
         if(!isset(self::$middleware[$key])) {
             print_r("Middleware '{$key}' is not defined");
             exit;
